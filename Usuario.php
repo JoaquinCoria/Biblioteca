@@ -11,7 +11,7 @@
         }
         function verLibrosPrestados()
         {
-            $this->librosP
+            $this->librosPrestados;
         }
         function pedirPrestado()
         {

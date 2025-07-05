@@ -2,7 +2,7 @@
      class Libro {
         private $titulo;
         private $autor;
-        private $isbn;
+        private  $isbn;
         private $disponible;
         public function __construct ($tit, $aut, $isbn, $dispo)
         {
@@ -29,7 +29,7 @@
             $this->disponible
         }
         public function devolver(){
-
+            
         }
      }
 ?>
