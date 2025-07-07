@@ -11,9 +11,9 @@
             $this->isbn = $isbn;
             $this->disponible = $dispo;
         }
-        public function __SET($k)
+        public function getTitulo()
         {
-            
+            return $titulo = $this->titulo;
         }
         public function estaDisponible(){
             if ($this->disponible)
@@ -26,10 +26,17 @@
             }
         }
         public function prestar(){
-            $this->disponible
+
+            if($this->disponible)
+            {
+                $this->disponible = FALSE;
+            }
         }
         public function devolver(){
-            
+            if(!$this->disponible)
+            {
+                $this->disponible = TRUE;
+            }
         }
      }
 ?>
