@@ -11,18 +11,18 @@
             $this->isbn = $isbn;
             $this->disponible = $dispo;
         }
-        public function getTitulo()
+        public function __GET($k)
         {
-            return $titulo = $this->titulo;
+            return $this->$k;
         }
         public function estaDisponible(){
             if ($this->disponible)
             {
-                echo "Este libro esta disponble";
+                return "Disponible";
             }
             else
             {
-                echo "Este libro no esta disponible";
+                return "No disponible";
             }
         }
         public function prestar(){

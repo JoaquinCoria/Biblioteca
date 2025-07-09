@@ -1,7 +1,7 @@
 <?php
     class Usuario {
-        private $nombre;
         private $idUsuario;
+        private $nombre;
         private $librosPrestados;
         public function __construct ($nom, $idUs, $librosP)
         {

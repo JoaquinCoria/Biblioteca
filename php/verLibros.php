@@ -1,9 +1,5 @@
 <?php
-    include_once('../Libros.php');
-    $libros[] = new Libro("Harry potter", "J.K Rowling", 123456, TRUE);
-    $libros[] = new Libro("El principito", "Antoine de Saint-Exupéry", 234567, TRUE);
-    $libros[] = new Libro("El laberinto del fauno", "Cornelia Funke", 345678, TRUE);
-    $libros[] = new Libro("Las cronicas de narnia", "C.S Lewis", 456789, TRUE);
+    include_once('../DeclararObjetos.php');
     
 ?>
 <!DOCTYPE html>
@@ -12,37 +8,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libros</title>
+</head>
+<body>
+    <center><h1>Libros</h1>
+    <style>
+        td{
+            border: black 1px solid;
+            padding: 5px;
+            margin: 0px;
+        }
+    </style>
     <table>
         <tr>
             <td>
-                Titulo
+                <b>Titulo</b>
             </td>
             <td>
-                Autor
+                <b>Autor</b>
             </td>
             <td>
-                isbn
+                <b>ISBN</b>
+            </td>
+            <td>
+               <b> Está disponible</b>
             </td>
         </tr>
         <?php
         foreach($libros as $i => $value)
         {
-            echo $value.getTitulo();
             echo '<tr>
-                <td>';
-    
-            echo'</td>
-                <td>
-    
-                </td>
-                <td>
-                </td>
-            </tr>';
+                <td>'
+                . $value->__GET("titulo").
+                '</td>
+                <td>'
+                . $value->__GET("autor").
+                '</td>
+                <td>'
+                . $value->__GET("isbn").
+                '</td>
+                <td>'
+                . $value->estaDisponible().
+            '</tr>';
         }
         ?>
     </table>
-</head>
-<body>
-    
+    <a href="../index.php">Volver</a></center>
 </body>
 </html>
