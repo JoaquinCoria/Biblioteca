@@ -16,28 +16,47 @@
     <title>Biblioteca</title>
 </head>
 <body>
-    <form action="index.php" method = "post">
+    <style>
+        body{
+            padding:30px;
+        }
+        a{
+            margin:30px;
+            background-color:#aaaaaa;
+            padding:10px;
+            text-decoration:none;
+            color:black;
+            border-radius: 10px;
+            transition: 200ms;
+        }
+        a:hover{
+            background-color:white;
+            box-shadow: black 2px 2px 7px;
+            transition: 200ms;
+        }
+    </style>
+    <center>
     <?php
     if(!isset($_SESSION['nombreUsuario']))
     {
         ?>
-        <a href="./php/registrar.php">Registrarse</a><br>
-        <a href="./php/sesion.php">Iniciar sesión</a><br>
+        <a href="./php/registrar.php">Registrarse</a>
+        <a href="./php/sesion.php">Iniciar sesión</a>
         <?php
     }else{
         ?>
-        <a href="./php/cerrarSesion.php">Cerrar sesión</a><br>
+        <a href="./php/cerrarSesion.php">Cerrar sesión</a>
         <?php
     }
     ?>
-    <a href="./php/verLibros.php">Ver libros</a><br>
+    <a href="./php/verLibros.php">Ver libros</a>
     <?php
         if(isset($_SESSION['nombreUsuario']))
         {
-            echo '<a href="./php/librosDisponibles.php">Ver libros disponibles</a><br>';
+            echo '<a href="./php/librosDisponibles.php">Ver libros disponibles</a>';
             echo '<a href="./php/librosPrestados.php">Ver libros prestados</a>';
         }
     ?>
-    </form>
+    </center>
 </body>
 </html>

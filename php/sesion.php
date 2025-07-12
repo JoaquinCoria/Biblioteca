@@ -24,12 +24,14 @@
     <title>Iniciar sesión</title>
 </head>
 <body>
+    <center>
     <form action = "sesion.php" method = "post">
-        <center><h1>Iniciar Sesión</h1></center>
+        <h1>Iniciar Sesión</h1>
         <label for="nombre">Nombre</label>
-        <input type="text" name = "nombre">
+        <input type="text" name = "nombre"><br><br>
         <button type = "submit" name = "iniciarSesion">Iniciar sesión</button>
         <a href="../index.php">Volver</a>
     </form>
+    </center>
 </body>
 </html>

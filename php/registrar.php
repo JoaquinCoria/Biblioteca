@@ -20,10 +20,11 @@
 </head>
 <body>
     <form action = "./registrar.php" method = "post">
-        <center><h1>Registarse</h1></center>
+        <center><h1>Registarse</h1>
         <label for="nombre">Nombre</label>
-        <input type="text" name = "nombre">
-        <button type = "submit" name = "registrarse">Registrar</button>
+        <input type="text" name = "nombre"><br><br>
+        <button type = "submit" name = "registrarse">Registrar</button><br><br>
+        <center>
     </form>
     <a href="../index.php">Volver</a>
     <a href="./sesion.php">Inciar Sesión</a>
