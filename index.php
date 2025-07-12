@@ -4,6 +4,7 @@
     include_once('Usuario.php');
     include_once('Biblioteca.php');
     if(!isset($_SESSION['biblioteca'])){
+        // Inserta datos como ejemplo
         include_once('DeclararObjetos.php');
     }
     $biblioteca = unserialize($_SESSION['biblioteca']);

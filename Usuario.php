@@ -26,7 +26,6 @@
         }
         public function devolverLibro($libro)
         {
-            print_r($this->librosPrestados);
             foreach($this->librosPrestados as $i=>$libroPrestado)
             {
                 if($libroPrestado->__GET('isbn') == $libro->__GET('isbn')){
