@@ -34,7 +34,8 @@
             </td>
         </tr>
         <?php
-        foreach($libros as $i => $value)
+        $todosLosLibros = $biblioteca->__GET("coleccionLibros");
+        foreach($todosLosLibros as $i => $value)
         {
             echo '<tr>
                 <td>'
