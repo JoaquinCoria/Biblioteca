@@ -1,34 +1,12 @@
 <?php
     session_start();
-    include_once('DeclararObjetos.php');
-    print_r($_POST); echo "<br>";
-    print_r($_SESSION);echo "<br>";
-    print_r($biblioteca->__GET("usuariosRegistrados"));echo "<br>";
-    if(isset($_POST['boton'])){
-        switch($_POST['boton']){
-            case 'registrarse':
-                include_once('./php/registrar.php');
-                break;
-            case 'registrar':
-                include_once('./php/btnRegistrarse.php');
-                print_r($biblioteca->__GET("usuariosRegistrados"));
-                echo "hola";
-                break;
-            case 'iniciarSesion':
-                include_once('./php/sesion.php');
-                break;
-            case 'sesion':
-                include_once('./php/btnIniciarSesion.php');
-                break;
-            case 'cerrarSesion.php':
-                include_once('./php/cerrarSesion.php');
-                break;
-            case 'verLibros':
-                include_once('./php/verLibrosDisponibles.php');
-                break;
-        }
+    include_once('Libros.php');
+    include_once('Usuario.php');
+    include_once('Biblioteca.php');
+    if(!isset($_SESSION['biblioteca'])){
+        include_once('DeclararObjetos.php');
     }
-
+    $biblioteca = unserialize($_SESSION['biblioteca']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,16 +21,15 @@
     if(!isset($_SESSION['nombreUsuario']))
     {
         ?>
-        <button type = "submit" name = "boton" value = "registrarse">Registrarse</button><br>
-        <button type = "submit" name = "boton" value = "iniciarSesion">Iniciar sesión</button><br>
+        <a href="./php/registrar.php">Registrarse</a><br>
+        <a href="./php/sesion.php">Iniciar sesión</a><br>
         <?php
     }else{
         ?>
-        <button type = "submit" name = "boton" value = "cerrarSesion">Cerrar sesión</button><br>
+        <a href="./php/cerrarSesion.php">Cerrar sesión</a><br>
         <?php
     }
     ?>
-    <a href="./php/agregarLibro.php">Agregar libro</a><br>
     <a href="./php/verLibros.php">Ver libros</a><br>
     <?php
         if(isset($_SESSION['nombreUsuario']))

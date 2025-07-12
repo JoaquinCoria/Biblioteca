@@ -13,24 +13,25 @@
         {
             return $this->$k;
         }
-        function verLibrosPrestados()
+        public function verLibrosPrestados()
         {
             return $this->librosPrestados;
         }
-        function pedirPrestado($libro)
+        public function pedirPrestado($libro)
         {
             if($libro->estaDisponible() == "Disponible"){
                 $libro->prestar();
                 $this->librosPrestados[] = $libro;
             }
         }
-        function devolverLibro($libro)
+        public function devolverLibro($libro)
         {
-            foreach($this->verLibrosPrestados as $i->$libroPrestado)
+            print_r($this->librosPrestados);
+            foreach($this->librosPrestados as $i=>$libroPrestado)
             {
                 if($libroPrestado->__GET('isbn') == $libro->__GET('isbn')){
-                    $libro->devolverLibro();
-                    unset($this->verLibrosPrestados[$i]);
+                    $libro->devolver();
+                    unset($this->librosPrestados[$i]);
                 }
             }
         }  

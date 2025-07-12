@@ -1,6 +1,9 @@
 <?php
     session_start();
-    include_once("../DeclararObjetos.php");
+    include_once('../Libros.php');
+    include_once('../Usuario.php');
+    include_once('../Biblioteca.php');
+    $biblioteca = unserialize($_SESSION['biblioteca']);
     if(isset($_POST['isbn']))
     {
         $todosLosLibros = $biblioteca->__GET("coleccionLibros");
@@ -14,9 +17,9 @@
         {
             if($libro->__GET("isbn") == $_POST['isbn']){
                 $usuario->pedirPrestado($libro);
-                print_r($usuario->__GET("librosPrestados"));
             }
         }
+        $_SESSION['biblioteca'] = serialize($biblioteca);
     }
 ?>
 <!DOCTYPE html>

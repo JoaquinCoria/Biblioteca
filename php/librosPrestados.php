@@ -1,27 +1,32 @@
 <?php
     session_start();
-    include_once("../DeclararObjetos.php");
+    include_once('../Libros.php');
+    include_once('../Usuario.php');
+    include_once('../Biblioteca.php');
+    $biblioteca = unserialize($_SESSION['biblioteca']);
     $todosLosUsuarios = $biblioteca->__GET("usuariosRegistrados");
     foreach($todosLosUsuarios as $value){
         if($value->__GET("nombre") == $_SESSION['nombreUsuario']){
             $usuario = $value;
         }
     }
-    print_r($usuario);
     $librosPrestados = $usuario->verLibrosPrestados();
     if($librosPrestados==NULL)
     {
         echo "No hay libros prestados<br><a href='../index.php'>Volver</a>";
         exit();
     }
-    print_r($librosPrestados);
     if(isset($_POST['isbn']))
     {
         foreach($librosPrestados as $value){
             if($value->__GET("isbn") == $_POST['isbn']){
                 $libro = $value;
+                $usuario->devolverLibro($libro);
+                header('location: librosPrestados.php');
+                break;
             }
         }
+        $_SESSION['biblioteca'] = serialize($biblioteca);
     }
 ?>
 <!DOCTYPE html>
@@ -55,7 +60,7 @@
                 <b>Pedir</b>
             </td>
         </tr>
-        <form action="librosDisponibles.php" method="post">
+        <form action="librosPrestados.php" method="post">
         <?php
         foreach($librosPrestados as $value)
         {

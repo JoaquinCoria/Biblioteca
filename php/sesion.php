@@ -1,4 +1,21 @@
-
+<?php
+    session_start();
+    include_once('../Libros.php');
+    include_once('../Usuario.php');
+    include_once('../Biblioteca.php');
+    $biblioteca = unserialize($_SESSION['biblioteca']);
+    if(isset($_POST['iniciarSesion']))
+    {
+        $usuarios = $biblioteca->__GET("usuariosRegistrados");
+        foreach($usuarios as $usuario)
+        {
+            if($usuario->__GET("nombre") == $_POST['nombre']){
+                $_SESSION['nombreUsuario'] = $_POST['nombre'];
+                header('location: ../index.php');
+            }
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +24,11 @@
     <title>Iniciar sesión</title>
 </head>
 <body>
-    <form action = "./index.php" method = "post">
+    <form action = "sesion.php" method = "post">
         <center><h1>Iniciar Sesión</h1></center>
         <label for="nombre">Nombre</label>
         <input type="text" name = "nombre">
-        <button type = "submit" name = "boton" value = "sesion">Iniciar sesión</button>
+        <button type = "submit" name = "iniciarSesion">Iniciar sesión</button>
         <a href="../index.php">Volver</a>
     </form>
 </body>

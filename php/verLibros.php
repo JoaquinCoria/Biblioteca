@@ -1,6 +1,9 @@
 <?php
-    include_once('../DeclararObjetos.php');
-    
+    session_start();
+    include_once('../Libros.php');
+    include_once('../Usuario.php');
+    include_once('../Biblioteca.php');
+    $biblioteca = unserialize($_SESSION['biblioteca']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
